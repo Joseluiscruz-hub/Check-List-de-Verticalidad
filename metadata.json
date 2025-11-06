@@ -1,0 +1,8 @@
+{
+  "name": "Copy of FEMSA Quality Checklist Pro",
+  "description": "An advanced, offline-first progressive web application for conducting verticality and stacking quality control checklists. Features include QR scanning, photo evidence, historical data, statistics, and data export.",
+  "requestFramePermissions": [
+    "camera",
+    "geolocation"
+  ]
+}

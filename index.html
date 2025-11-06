@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FEMSA Quality Checklist Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .tab-button.active {
+            border-color: #ed1c24;
+            color: #ed1c24;
+        }
+        .dark .tab-button.active {
+            border-color: #f87171;
+            color: #f87171;
+        }
+        /* Custom scrollbar for better aesthetics on desktop */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #2d3748;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c5c5c5;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #4a5568;
+        }
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: #718096;
+        }
+
+        /* Print-specific styles */
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                background-color: white !important;
+                color: black !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .print-only {
+                display: block !important;
+            }
+            main {
+                max-width: 100% !important;
+                padding: 1rem !important;
+                margin: 0 !important;
+            }
+            .dark { /* Force light mode for printing */
+                --tw-bg-opacity: 1 !important;
+                background-color: white !important;
+            }
+            /* Reset dark mode overrides for printing */
+            .dark .dark\:bg-gray-900,
+            .dark .dark\:bg-gray-800,
+            .dark .dark\:bg-gray-700,
+            .dark .dark\:bg-gray-700\/50,
+            .dark .dark\:bg-gray-600 {
+                background-color: white !important;
+            }
+            .dark .dark\:text-gray-100,
+            .dark .dark\:text-gray-200,
+            .dark .dark\:text-gray-300,
+            .dark .dark\:text-gray-400 {
+                color: #1f2937 !important;
+            }
+            .dark .dark\:border-gray-700,
+            .dark .dark\:border-gray-600 {
+                border-color: #e5e7eb !important;
+            }
+            .dark .dark\:hover\:bg-gray-600:hover {
+                background-color: #f9fafb !important;
+            }
+
+            table {
+                font-size: 10pt !important;
+                border-collapse: collapse !important;
+                width: 100% !important;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+            }
+            .overflow-x-auto {
+                overflow-x: visible !important;
+            }
+            th, td {
+                border: 1px solid #ccc !important;
+                padding: 4px 8px !important;
+            }
+            thead {
+                display: table-header-group; /* Ensure header repeats on each page */
+            }
+            tr {
+                page-break-inside: avoid;
+            }
+            .print-hide-action {
+                display: none !important;
+            }
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+  }
+}
+</script>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>
