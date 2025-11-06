@@ -30,6 +30,20 @@ const PrintHeader: React.FC = () => (
     </div>
 );
 
+// ============================
+// DECORATIVE ICON
+// ============================
+const RabbitIcon: React.FC<{ className?: string }> = ({ className }) => (
+    <svg aria-hidden="true" viewBox="0 0 80 130" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M60.5 78.5C55.5 88.5 55.5 101.5 60.5 111.5L62.5 116.5C64.5 120.5 67 123.5 69.5 125.5C75 130 83.5 131.5 89 129C95.5 126 99 117.5 99 110.5C99 96 91.5 85 85 75.5" transform="translate(-30 -5)" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M70.5 3C79.5 19.5 85.5 49 75.5 66.5C71.5 74.5 66 81 60.5 86" transform="translate(-30 -5)" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M40 42C40 42 38 31.5 45 26C52 20.5 56.5 28.5 58.5 33" transform="translate(-30 -5)" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M70 94C70 94 71.5 92 73.5 93" transform="translate(-30 -5)" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M78 94C78 94 76.5 92 74.5 93" transform="translate(-30 -5)" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M74 97.5C74 97.5 75 99 74 100C73 101 73 97.5 74 97.5" transform="translate(-30 -5)" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+);
+
 
 // ============================
 // MODAL COMPONENTS
@@ -276,16 +290,35 @@ const Header: React.FC<{ dbInitialized: boolean }> = ({ dbInitialized }) => {
     }, []);
 
     return (
-        <header className="text-center mb-6 no-print">
-            <div className="bg-[#ed1c24] text-white p-3 rounded-b-2xl shadow-lg flex items-center justify-center gap-4 max-w-lg mx-auto">
-                <img src="https://logodownload.org/wp-content/uploads/2019/09/coca-cola-femsa-logo.png" alt="Logo FEMSA" className="h-10 object-contain" />
-                <h1 className="text-xl font-bold">Quality Checklist Pro</h1>
+        <header className="mb-6 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg flex items-center justify-between relative overflow-hidden no-print">
+            {/* Main Content */}
+            <div className="flex items-center gap-5 z-10">
+                <img 
+                    src="https://seeklogo.com/images/C/coca-cola-femsa-logo-6503544C27-seeklogo.com.png" 
+                    alt="Logo FEMSA" 
+                    className="h-14 object-contain" 
+                />
+                <div>
+                    <h1 className="text-2xl font-bold text-gray-800 dark:text-gray-100">Quality Checklist Pro</h1>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">Verificación de Estándares de Calidad</p>
+                </div>
             </div>
-            <div className="text-sm text-gray-500 dark:text-gray-400 mt-4">
-                <p>{dateTime.toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })} - {dateTime.toLocaleTimeString('es-ES')}</p>
-                <p className={`font-semibold ${dbInitialized ? 'text-green-600 dark:text-green-400' : 'text-red-500'}`}>
-                    {dbInitialized ? 'Base de Datos Conectada' : 'Error en Base de Datos'}
+
+            {/* Rabbit Decoration */}
+            <RabbitIcon className="w-28 h-auto absolute top-0 right-0 -mr-4 -mt-4 text-red-100 dark:text-gray-700" />
+
+            {/* Status and Time */}
+            <div className="text-right text-sm z-10">
+                <p className="font-medium text-gray-600 dark:text-gray-300">
+                    {dateTime.toLocaleDateString('es-ES', { day: '2-digit', month: 'long', year: 'numeric' })}
                 </p>
+                <p className="text-gray-500 dark:text-gray-400">
+                    {dateTime.toLocaleTimeString('es-ES')}
+                </p>
+                <div className={`mt-2 flex items-center justify-end gap-2 font-semibold ${dbInitialized ? 'text-green-600 dark:text-green-400' : 'text-red-500'}`}>
+                    <Icon name={dbInitialized ? 'check-circle' : 'exclamation-triangle'} />
+                    <span>{dbInitialized ? 'Base de Datos Conectada' : 'Error en Base de Datos'}</span>
+                </div>
             </div>
         </header>
     );
